@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" class="logo">
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Certifications">Certifications</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <p>UG STUDENT</p>
+            <h1><span> Mummidi Venkata Sowjanya</span></h1>
+            <h3><span> Advancing Knowledge !...</span></h3>
+        </div>
+    </div>
+</div>
+<!-- ------about------------  -->  
+<div id="About">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/user.png">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>I am currently pursuing final year of my Bachelors degree in CSE branch, Pragati Engineering College.I am Passionate about continuous learning and expanding my knowledge, I'm committed to exploring new horizons and pushing the boundaries of my expertise. Eager to embrace fresh challenges and broaden my skill set.</p>
+
+                <div class="tab-titles">
+                    <p class="tab-links activeLink" onclick="opentab('Skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('Education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="Skills">
+                    <ul>
+                        <li><span>JAVA programming</span></li>
+                        <li><span>Python</span></li>
+                        <li><span>SQL</span></li>
+                        <li><span>HTML(basic)</span></li>
+                        <li><span>css (basic)</span></li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="Education">
+                    <ul>
+                        <li><span>B.Tech(2020-2024) </span><br>Pragati Engineering College <br>CGPA: 8.26 <br>Surampalem</li>
+                        <li><span>INTERMEDIATE(2018-2020) </span><br>Aditya Junior College <br>CGPA: 9.5 <br>kakinada</li>
+                        <li><span>SSC(2017-2018)</span><br>Narayana Olympiad School <br>CGPA: 10 <br> kakinada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------certifications------------ -->
+<div id="Certifications">
+    <div class="container">
+        <h1 class="sub-title">My Certifications</h1>
+        <div class="Certifications-list">
+            <div>
+                <h2>AWS CLOUD PRACTITIONER</h2>
+                <p></p>
+            </div>
+            <div>
+                <h2>FUTURE READY TALENT(FRT) INTERNSHIP</h2>
+                <p>static website on title “THE BODY AND SOUL SPA” using Azure tools </p>
+            </div>
+            <div>
+                <h2>NPTEL ELITE</h2>
+                <p>Elite certiﬁcate in Python for Data Science ,Elite+Silver certiﬁcate in Data Analytics with Python</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-------------Contact---------- -->
+<div id="Contact">
+    <div class="container">
+        <div class="row">
+            <div class="Contact-left">
+                <h1 class="sub-title">Drop here</h1>
+                <p>GMAIL :mummidisowjanya423@gmail.com</p>
+                <p> PH NO: 7032798828</p>
+            </div>
+            <div class="Contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="Suggestion" rows="6" placeholder="Your Suggestion"></textarea>
+                    <button type="submit" class="btn btn2">submit</button>
+                </form>
+                <span id ="msg"></span>
+            </div>
+
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © 2023@Sowjanya Mummidi</p>
+    </div>
+
+</div>
+
+
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+    
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("activeLink");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("activeLink");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+</script> 
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwXjvWmNNGZ9JDtuCWoEK9LPxikwAAm2s6edsABRtCkdxGE2BCwfdFvx8yCPNTJMw1p/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg=document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML="Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+
+</body>
+</html>
