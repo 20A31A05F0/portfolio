@@ -1,4 +1,4 @@
 # portfolio
-[http://127.0.0.1:5504/index.html]
+[https://20a31a05f0.github.io/portfolio/]
 
 
